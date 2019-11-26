@@ -3,13 +3,13 @@ build:
     coverage:
       tests:
         override:
-          - command: ./my-test-run
+          - command: ./vendor/bin/phpunit tests --coverage-clover coverage
             coverage:
-              file: path/to/coverage-data
+              file: coverage
 
               # These formats are supported:
               # clover, cobertura, jacoco, python-cc, ruby-cc, go-cc, lcov
-              format: name-of-format
+              format: clover
 tools:
   php_cs_fixer: false
 filter:
