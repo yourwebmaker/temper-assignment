@@ -2,12 +2,12 @@
 $csvRows = file(__DIR__ . '/../data/export.csv');
 $data = [];
 foreach ($csvRows as $i => $csvRow) {
-    //todo add tests
-    if ($i === 0) {
-        continue;
-    }
 
     [$userId, $dateCreatedTime, $step] = str_getcsv($csvRow, ';');
+
+    if ($i === 0 || empty($step)) {
+        continue;
+    }
 
     $weekNumber = (DateTimeImmutable::createFromFormat('Y-m-d', $dateCreatedTime))->format('W');
     $weekKey = 'week ' . $weekNumber;
@@ -41,6 +41,8 @@ foreach ($mappedData as $weekName => $week) {
     $chartData[$weekName] = [
         'name' => $weekName,
     ];
+
+    $chartData[$weekName]['data'][0] = [0, 100];
 
     foreach ($week as $stepName => $step) {
         $chartData[$weekName]['data'][] = [(int) $stepName, (float) $step['percentage']];
