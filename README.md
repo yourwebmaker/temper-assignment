@@ -1,3 +1,5 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yourwebmaker/temper-assignment/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yourwebmaker/temper-assignment/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/yourwebmaker/temper-assignment/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/yourwebmaker/temper-assignment/?branch=master)
 # Temper coding Assignment
 
 ### Install and Run
