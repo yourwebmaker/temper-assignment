@@ -12,15 +12,12 @@ foreach ($csvRows as $i => $csvRow) {
     $weekNumber = (DateTimeImmutable::createFromFormat('Y-m-d', $dateCreatedTime))->format('W');
     $weekKey = 'week ' . $weekNumber;
 
-    //todo add tests
     if (isset($data[$weekKey]['total'])) {
         $data[$weekKey]['total']++;
     } else {
         $data[$weekKey]['total'] = 1;
     }
 
-    //todo add tests
-    //todo stepname
     if (isset($data[$weekKey]['steps'][$step]['total'])) {
         $data[$weekKey]['steps'][$step]['total']++;
     } else {
