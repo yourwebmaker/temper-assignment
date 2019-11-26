@@ -14,3 +14,5 @@ Just run `./vendor/bin/phpunit tests`
 - Error on the CSV
 - Data assignments x classes
 
+### Screenshot
+<img src="docs/screenshot.png" alt="Screenshot"/>
