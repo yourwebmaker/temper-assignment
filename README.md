@@ -1,5 +1,8 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yourwebmaker/temper-assignment/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yourwebmaker/temper-assignment/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/yourwebmaker/temper-assignment/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/yourwebmaker/temper-assignment/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/yourwebmaker/temper-assignment/badges/build.png?b=master)](https://scrutinizer-ci.com/g/yourwebmaker/temper-assignment/build-status/master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/yourwebmaker/temper-assignment/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+
 # Temper coding Assignment
 
 ### Install and Run
