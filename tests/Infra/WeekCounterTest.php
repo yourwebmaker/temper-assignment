@@ -8,8 +8,8 @@ use PHPUnit\Framework\TestCase;
 
 class WeekCounterTest extends TestCase
 {
-    /** @var WeekCounter */
-    private $counter;
+    /** @var WeekPercentageCalculator */
+    private $calculator;
 
     public function setUp() : void
     {
@@ -30,10 +30,16 @@ class WeekCounterTest extends TestCase
                 ['createdAt' => '2019-11-26', 'onboardingPercentage' => 99,],
                 ['createdAt' => '2019-11-26', 'onboardingPercentage' => 100,],
                 ['createdAt' => '2019-11-26', 'onboardingPercentage' => 99,],
+            ],
+            'week 50' => [
+                ['createdAt' => '2019-11-26', 'onboardingPercentage' => 99,],
+                ['createdAt' => '2019-11-26', 'onboardingPercentage' => 99,],
+                ['createdAt' => '2019-11-26', 'onboardingPercentage' => 11,],
+                ['createdAt' => '2019-11-26', 'onboardingPercentage' => 15,],
             ]
         ];
 
-        $this->counter = new WeekCounter($data);
+        $this->calculator = new WeekPercentageCalculator($data);
     }
 
     /**
@@ -41,20 +47,17 @@ class WeekCounterTest extends TestCase
      */
     public function countPerWeek(): void
     {
-        self::assertEquals(6, $this->counter->count()['week 48']['count']);
-        self::assertEquals(7, $this->counter->count()['week 49']['count']);
+        self::assertEquals(50, $this->calculator->count()['week 50'][99]['percentage']);
+        self::assertEquals(25, $this->calculator->count()['week 50'][11]['percentage']);
+        self::assertEquals(25, $this->calculator->count()['week 50'][15]['percentage']);
     }
 
     /**
      * @test
      */
-    public function countPerOnboardingPercentage(): void
+    public function keysAreSorted() : void
     {
-        self::assertEquals(3, $this->counter->count()['week 48']['onboardingPercentagesCounts'][10]);
-        self::assertEquals(2, $this->counter->count()['week 48']['onboardingPercentagesCounts'][30]);
-
-        self::assertEquals(3, $this->counter->count()['week 49']['onboardingPercentagesCounts'][100]);
-        self::assertEquals(2, $this->counter->count()['week 49']['onboardingPercentagesCounts'][99]);
+        self::assertEquals([11,15,99], array_keys($this->calculator->count()['week 50']));
     }
 }
 
