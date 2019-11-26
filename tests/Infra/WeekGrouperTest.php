@@ -29,7 +29,7 @@ class WeekGrouperTest extends TestCase
             [
                 'createdAt' => '2019-12-26',
                 'onboardingPercentage' => 10,
-            ]
+            ],
         ];
 
         $this->grouper = new WeekGrouper($data);
@@ -51,4 +51,3 @@ class WeekGrouperTest extends TestCase
         self::assertCount(2, $this->grouper->group()['week 48']);
     }
 }
-

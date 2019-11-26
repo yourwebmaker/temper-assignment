@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Temper\Assignment\UserInterface\Rest;
 
+use function array_values;
+
 final class HighchartsMapper
 {
     /** @var array */
@@ -18,9 +20,7 @@ final class HighchartsMapper
     {
         $chartData = [];
         foreach ($this->data as $weekName => $week) {
-            $chartData[$weekName] = [
-                'name' => $weekName,
-            ];
+            $chartData[$weekName] = ['name' => $weekName];
 
             $chartData[$weekName]['data'][0] = [0, 100];
 

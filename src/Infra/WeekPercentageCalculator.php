@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Temper\Assignment\Infra;
 
+use function array_map;
+use function count;
+use function ksort;
+
 /**
  * Counts the total of entries per week + total per onboarding percentage
  */
@@ -21,8 +25,10 @@ final class WeekPercentageCalculator
     {
         return array_map(static function ($week) {
             ksort($week['onboardingPercentagesCounts']);
-            return array_map(static function ($step) use ($week){
-                $step['percentage'] = ($step['count'] /  $week['count']) * 100;
+
+            return array_map(static function ($step) use ($week) {
+                $step['percentage'] = $step['count'] /  $week['count'] * 100;
+
                 return $step;
             }, $week['onboardingPercentagesCounts']);
         }, $this->countOnboardingPercentages());

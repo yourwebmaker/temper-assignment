@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Temper\Assignment\Infra;
 
+use function file;
+use function str_getcsv;
+
 final class CSVParser
 {
     /** @var array */
@@ -19,7 +22,7 @@ final class CSVParser
         $data = [];
 
         foreach ($this->csvRows as $i => $csvRow) {
-            $csvRowData =  str_getcsv($csvRow, ';');
+            $csvRowData           =  str_getcsv($csvRow, ';');
             $onboardingPercentage = $csvRowData[2];
 
             if ($i === 0 || empty($onboardingPercentage)) {

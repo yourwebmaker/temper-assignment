@@ -21,8 +21,8 @@ final class WeekGrouper
         $groups = [];
 
         foreach ($this->data as $datum) {
-            $weekNumber = (DateTimeImmutable::createFromFormat('Y-m-d', $datum['createdAt']))->format('W');
-            $weekName = 'week ' . $weekNumber;
+            $weekNumber          = DateTimeImmutable::createFromFormat('Y-m-d', $datum['createdAt'])->format('W');
+            $weekName            = 'week ' . $weekNumber;
             $groups[$weekName][] = $datum;
         }
 
