@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+header('content-type: application/json');
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Temper\Assignment\Infra\CSVParser;
@@ -14,4 +16,4 @@ $weekGrouper          = new WeekGrouper($csvParser->parse());
 $percentageCalculator = new WeekPercentageCalculator($weekGrouper->group());
 $highchartsMapper     = new HighchartsMapper($percentageCalculator->count());
 
-echo json_encode($highchartsMapper->map());
+echo $_GET['callback']. '('. json_encode($highchartsMapper->map()) . ')';

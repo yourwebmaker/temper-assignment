@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Temper Assignment</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script>
+    (function() {
+        ///
+
+        var options = {
+            chart: {
+                renderTo: 'container',
+                type: 'spline'
+            },
+            series: [{}]
+        };
+
+        var url =  "http://localhost:8000/oop.php?callback=?";
+        $.getJSON(url,  function(data) {
+            options.series = data;
+            var chart = new Highcharts.Chart(options);
+        });
+
+    })();
+</script>
+
+</body>
+</html>
