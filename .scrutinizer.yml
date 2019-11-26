@@ -1,14 +1,15 @@
 build:
   nodes:
-    analysis:
+    coverage:
       tests:
         override:
-          - php-scrutinizer-run
-          -
-            command: './vendor/bin/phpunit --testsuite=unit --coverage-clover=coverage'
+          - command: ./my-test-run
             coverage:
-              file: 'coverage'
-              format: 'clover'
+              file: path/to/coverage-data
+
+              # These formats are supported:
+              # clover, cobertura, jacoco, python-cc, ruby-cc, go-cc, lcov
+              format: name-of-format
 tools:
   php_cs_fixer: false
 filter:
@@ -29,10 +30,6 @@ checks:
           mongodb: false
           php:
             version: 7.3
-        cache:
-          disabled: false
-          directories:
-            - ~/.composer/cache
 
         project_setup:
           override: true
