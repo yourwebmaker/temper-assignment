@@ -1,0 +1,47 @@
+build:
+  nodes:
+    analysis:
+      tests:
+        override:
+          - php-scrutinizer-run
+          -
+            command: './vendor/bin/phpunit --testsuite=unit --coverage-clover=coverage'
+            coverage:
+              file: 'coverage'
+              format: 'clover'
+tools:
+  php_cs_fixer: false
+filter:
+  excluded_paths:
+    - 'tests/'
+    - 'public/'
+    - 'data/'
+    - 'vendor/'
+checks:
+  php: true
+    nodes:
+      analysis:
+        environment:
+          mysql: false
+          postgresql: false
+          redis: false
+          rabbitmq: false
+          mongodb: false
+          php:
+            version: 7.3
+        cache:
+          disabled: false
+          directories:
+            - ~/.composer/cache
+
+        project_setup:
+          override: true
+        tests:
+          override:
+            - php-scrutinizer-run
+            - phpcs-run
+
+    dependencies:
+      override:
+        - composer install --no-interaction --prefer-dist
+
